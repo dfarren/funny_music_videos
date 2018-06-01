@@ -265,15 +265,14 @@ def main():
                                      params.min_comments_per_video, category_id=category_id
                                      )
         if category == 'music':
-            with open('oversample', 'r') as f:
-                lines = f.readlines()
+            with open('sample', 'rb') as f:
+                lines = dill.load(f)
 
             videos_string = ''
-            for line in lines:
-                key, label = line.split()
+            for key in lines:
                 videos_string += key+','
             videos_string = videos_string[:-1]
-            print("oversample")
+
             _, _, data[category] = add_tags_stats_comments(i=0, collisions_counter=0,
                                                                          videos_string=videos_string, client=client,
                                                                          max_videos=params.max_videos_per_category,
