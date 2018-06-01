@@ -29,8 +29,7 @@ def add_videos(videos_html):
     with open('web/ranking.html', 'w') as f:
         f.writelines(new_data)
 
-    cwd = os.getcwd()
-    webbrowser.open('file://'+cwd+'/web/ranking.html', new=1)
+    open_in_browser()
 
 
 def reset():
@@ -39,3 +38,8 @@ def reset():
         videos_html.append("-Q2sSul5AsE")
 
     add_videos(videos_html)
+
+
+def open_in_browser():
+    cwd = os.getcwd()
+    webbrowser.open('file://'+cwd+'/web/ranking.html', new=1)
